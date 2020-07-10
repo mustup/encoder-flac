@@ -181,14 +181,34 @@ class Format(
 
                 for pair in sorted_pairs:
                     vorbis_comment_key = pair[0]
-                    vorbis_comment_value = pair[1]
-                    argument = shlex.quote(
-                        f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                    value = pair[1]
+
+                    multiple_values = isinstance(
+                        value,
+                        list,
                     )
 
-                    command.append(
-                        argument,
-                    )
+                    if multiple_values:
+                        vorbis_comment_values = value
+
+                        for vorbis_comment_value in vorbis_comment_values:
+                            argument = shlex.quote(
+                                f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                            )
+
+                            command.append(
+                                argument,
+                            )
+                    else:
+                        vorbis_comment_value = value
+
+                        argument = shlex.quote(
+                            f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                        )
+
+                        command.append(
+                            argument,
+                        )
 
         try:
             pictures = metadata['pictures']['APIC']
