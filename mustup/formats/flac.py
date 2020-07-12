@@ -155,17 +155,36 @@ class Format(
                     tag_key = pair[0]
                     vorbis_comment_key = pair[1]
                     try:
-                        vorbis_comment_value = common_tags[tag_key]
+                        value = common_tags[tag_key]
                     except KeyError:
                         pass
                     else:
-                        argument = shlex.quote(
-                            f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                        multiple_values = isinstance(
+                            value,
+                            list,
                         )
 
-                        command.append(
-                            argument,
-                        )
+                        if multiple_values:
+                            vorbis_comment_values = value
+
+                            for vorbis_comment_value in vorbis_comment_values:
+                                argument = shlex.quote(
+                                    f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                                )
+
+                                command.append(
+                                    argument,
+                                )
+                        else:
+                            vorbis_comment_value = value
+
+                            argument = shlex.quote(
+                                f'--tag={ vorbis_comment_key }={ vorbis_comment_value }',
+                            )
+
+                            command.append(
+                                argument,
+                            )
 
             try:
                 vorbis_comments = tags['Vorbis']
