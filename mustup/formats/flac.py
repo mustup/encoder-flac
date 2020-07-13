@@ -28,12 +28,13 @@ class Format(
         'track number': 'TRACKNUMBER',
     }
 
-    def __init__(
+    def process_directory(
                 self,
+                metadata,
             ):
         pass
 
-    def process(
+    def process_track(
                 self,
                 metadata,
                 source_basename,

@@ -5,6 +5,9 @@ packages = setuptools.find_namespace_packages(
 )
 
 setuptools.setup(
+    install_requires=[
+        'mustup_core == 0.1',
+    ],
     name='mustup_format_flac',
     packages=packages,
     python_requires='>= 3.8',
