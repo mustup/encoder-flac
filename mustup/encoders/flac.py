@@ -139,7 +139,7 @@ class Encoder(
             except KeyError:
                 pass
             else:
-                iterator = Format.tags_map.items(
+                iterator = Encoder.tags_map.items(
                 )
 
                 sorted_pairs = sorted(
