@@ -8,7 +8,7 @@ setuptools.setup(
     install_requires=[
         'mustup_core == 0.1',
     ],
-    name='mustup_format_flac',
+    name='mustup_encoder_flac',
     packages=packages,
     python_requires='>= 3.8',
     version='0.1',
