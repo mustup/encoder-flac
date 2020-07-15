@@ -28,12 +28,6 @@ class Encoder(
         'track number': 'TRACKNUMBER',
     }
 
-    def process_directory(
-                self,
-                metadata,
-            ):
-        pass
-
     def process_track(
                 self,
                 metadata,
