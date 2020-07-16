@@ -35,6 +35,9 @@ class Encoder(
                 source_name,
                 transformations,
             ):
+        order_only_inputs = [
+        ]
+
         output_name = f'{ source_basename }.flac'
 
         command = [
@@ -245,6 +248,10 @@ class Encoder(
                     '',
                 )
 
+                order_only_inputs.append(
+                    path,
+                )
+
                 command.append(
                     '--picture',
                 )
@@ -285,10 +292,11 @@ class Encoder(
         )
 
         rule = mustup.core.tup.rule.Rule(
+            command=command,
             inputs=[
                 source_name,
             ],
-            command=command,
+            order_only_inputs=order_only_inputs,
             outputs=[
                 output_name,
             ],
