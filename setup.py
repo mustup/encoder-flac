@@ -6,7 +6,8 @@ packages = setuptools.find_namespace_packages(
 
 setuptools.setup(
     install_requires=[
-        'mustup_core == 0.1',
+        'mustup_core >= 0.1 , < 1.0',
+        'mustup_tup >= 0.1 , < 1.0',
     ],
     name='mustup_encoder_flac',
     packages=packages,
