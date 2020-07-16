@@ -12,7 +12,9 @@ logger = logging.getLogger(
 class Encoder(
             mustup.core.encoder.Encoder,
         ):
-    supported_extensions = {
+    output_extension = 'flac'
+
+    supported_input_extensions = {
         '.wave',
     }
 
@@ -38,7 +40,7 @@ class Encoder(
         order_only_inputs = [
         ]
 
-        output_name = f'{ source_basename }.flac'
+        output_name = f'{ source_basename }.{ Encoder.output_extension }'
 
         command = [
             'flac',
